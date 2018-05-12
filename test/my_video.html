@@ -1,0 +1,70 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>视频播放</title>  
+    <style type="text/css">
+        .videoPlayer{
+            border: 1px solid #000;
+            width: 600px;
+        }
+        #video{
+            margin-top: 0px;
+        }
+        #videoControls{
+            width: 600px;
+            margin-top: 0px;
+        }
+        .show{
+            opacity: 1;
+        }
+        .hide{
+            opacity: 0;
+        }
+        #progressWrap{
+            background-color: black;
+            height: 25px;
+            cursor: pointer;
+        }
+        #playProgress{
+            background-color: red;
+            width: 0px;
+            height: 25px;
+            border-right: 2px solid blue;
+        }
+        #showProgress{
+            background-color: ;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 25px;
+        }
+    </style>    
+</head>  
+<body>  
+
+<div>
+    <div class="videoPlayer" id="videoContainer">
+        <p>硅谷.Silicon%20Valley.S05E01.720p.WEB.h264.双语字幕-深影字幕组.mp4</p>
+        <video id="video" width="320" height="240" controls="controls" preload>  
+            你的浏览器不支持
+            <source src="http://localhost:8081/VID_20170616_203849.mp4" type="video/mp4">  
+        </video> 
+        <div id="videoControls"> 
+            <div id="progressWrap">  
+                <div id="playProgress">  
+                    <span id="showProgress">0</span> 
+                </div>
+            </div>
+            <div>
+                <button id="playBtn" title="Play"> 播放 </button> 
+                <button id="fullScreenBtn" title="FullScreen Toggle">  全屏 </button>
+            </div> 
+        </div> 
+    </div>
+</div>
+
+
+<script src="video.js"></script>
+ 
+</body>  
+</html> 

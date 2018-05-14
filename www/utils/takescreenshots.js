@@ -1,11 +1,13 @@
 /**
- * takescreenshots.j
- * 抓取指定目录下的视频的缩略图，然后输出到指定目录下
+ * takescreenshots.js
+ * 抓取指定目录下的视频的缩略图，然后输出到指定目录下。
+ * version: 1.0
  */
 const debug = require('debug')('takescreenshots');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 const path = require('path');
+const argv = require('minimist')(process.argv.slice(2));
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const config = require('../config');
@@ -21,15 +23,16 @@ var mkdir = function(folder) {
     fs.mkdirSync(folder);
 }
 
-if (!fs.existsSync(OUTPUT_DIR)) {
-    mkdir(OUTPUT_DIR);
-}
 
 var screenShots = function (mp4file, opts, cb) {
     var size = opts.width ? opts.width : '?';
     size += 'x';
     size += opts.height ? opts.height : '?'
     var filename = opts.outfile ? opts.outfile : (path.basename(mp4file).replace(/\.[\w\d]+$/, "") + '.jpg');
+    var outdir = opts.outdir;
+    if (!fs.existsSync(outdir)) {
+        mkdir(outdir);
+    }
     if (size === '?x?') throw new Error("A width or height at least be set in params of screenShots()");
     ffmpeg(mp4file)
         .on('filenames', function (filenames) {
@@ -46,7 +49,7 @@ var screenShots = function (mp4file, opts, cb) {
         .screenshots({
             timestamps: [1],
             filename: filename,
-            folder: OUTPUT_DIR,
+            folder: outdir,
             size: size
         });
 }
@@ -57,10 +60,15 @@ var screenShotByDir = function(dir, opts) {
     var i = 0;
     files.forEach(function (file) { 
         var fullpath = dir + '/' + file; 
-        screenShots(fullpath, opts, function(err) {
-            if(err) return debug(err);
-            debug('Screenshots of %s is taken', fullpath);
-        });
+        if(!argv.n) {
+            screenShots(fullpath, opts, function (err) {
+                if (err) return debug(err);
+                if (argv.v)
+                    console.log('Screenshots of %s is taken.', fullpath);
+            });
+        } else {
+            console.log('Screenshots of %s is taken.', fullpath);
+        }
     });
 }
 
@@ -91,13 +99,31 @@ function readDirSync(root, depth, filter, result) {
 }
 
 
+var usage = function() {
+    var exename = path.basename(process.argv[1]);
+    console.log("Usage: %s [options] [video source]", exename);
+    console.log("  options:");
+    console.log("    -o     output dir, default is '%s'.", OUTPUT_DIR);
+    console.log("    -v     print verbose information");
+    console.log("    -n     cannot do the real work.");
+    console.log("    -h     print help info.");
+    process.exit(1);
+}
 
 // test 
 //screenShots('/home/liang/tmp/VID_20160510_103532.mp4', {width:'240'});
 //screenShotByDir('/home/liang/tmp', { width: 240 });
 
-var argv = process.argv;
-debug("argv:", argv);
-var fileroot = argv.length>2 ? argv[1] : config.fileRoot;
-debug("fileroot:", fileroot);
-screenShotByDir(fileroot, { width: 240 });
+var fileroot = argv._.length > 0 ? argv._[0] : config.fileRoot;
+var outdir = argv.o || OUTPUT_DIR;
+if (argv.h) usage();
+if(argv.v) {
+    console.log("config :", JSON.stringify(config, null, 2));
+    console.log('----------');
+    console.log("video source dir:", fileroot);
+    console.log("output dir:", outdir);
+    console.log('----------');
+}
+//if(argv.n) process.exit(0);
+
+screenShotByDir(fileroot, { width: 240, outdir: outdir});

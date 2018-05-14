@@ -15,6 +15,6 @@ proto.runtime = {
 };
 
 // print global config 
-console.log("config => %s", JSON.stringify(proto, null, 2));
+//console.log("config => %s", JSON.stringify(proto, null, 2));
 
 module.exports = proto;

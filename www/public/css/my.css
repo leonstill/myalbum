@@ -1,0 +1,123 @@
+.page>.title{
+    text-align: center;
+}
+/*图片圆角效果*/
+.img-yj{
+	border-radius: 9px;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+}
+.img-yj-small{
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+/*阴影效果*/
+.shadow {
+	-moz-box-shadow: 3px 3px 4px rgb(109,109,114);
+	-webkit-box-shadow: 3px 3px 4px rgb(109,109,114);
+	box-shadow: 3px 3px 4px rgb(109,109,114);
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+/*----------------------------------------------------------------*/
+/* video player */
+.videoPlayer {
+    border: 0px solid #000;
+    padding: 0px;
+    margin: 0px;
+}
+.videoPlayer video {
+    display: block;
+    border: 0px solid #eeeeee;
+    width: 100%;
+    max-height: 600px;
+    padding: 0px;
+    margin: 0px auto;
+}
+.videoPlayer #videoControls{
+    display: block;
+    margin: 4px 8px 8px 8px;
+}
+#videoControls .buttons{
+    display: inline;
+}
+#videoControls .progressText {
+    display: block;
+    float: right;    
+    margin: 5px 5px;
+}
+.playing { 
+    border-color: #ff8040 !important; 
+}
+.show{
+    opacity: 1;
+}
+.hide{
+    opacity: 0;
+}
+.clearfloat{clear:both} 
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+
+#progressWrap{
+    flex: auto;
+    background-color: white;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0 0 4px 0;
+}
+#progressWrap #progressBar {
+    position: relative;
+    margin: auto 0;
+    width: 100%;
+    height: 2px;
+    background-color: #c0c0c0;
+}
+#progressWrap #playProgress{
+    position: relative;
+    margin: auto 0;
+    top: -2px;
+    width: 0px;
+    height: 2px;
+    background-color: greenyellow;
+}
+/*----------------------------------------------------------------*/
+#load-continue {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    font-size: 1.5rem;
+    padding: 10px 0;
+}
+/*----------------------------------------------------------------*/
+.imageWrapParent {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0px;
+    margin: 10px 0px;
+}
+.imageWrapParent .imageWrap{
+    border: 0px solid #ffffff;
+}
+.imageWrapParent .image{
+    width: auto;  
+    height: auto;  
+    max-width: 100%;  
+    max-height: 100%;
+    border: 0px solid #ffffff;
+}
+.imageWrap .placeholder{
+    visibility:hidden;
+    display: inline;
+}
+.active {
+    border: 1px solid #ff8080;
+}
+.imageWrap {
+    text-align:center;
+    margin: 0 auto;
+    padding: 10px 0;
+}

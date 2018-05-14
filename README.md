@@ -37,16 +37,16 @@ README.md               本说明文件
 
 3.  配置web服务
     - 配置文件为www/config/config.js
-    - port为web服务端口号
-    - pageSize为每页显示的视频预览数量，0表示全部显示
+    - port为web服务端口号；
+    - pageSize为每页显示的视频预览数量，0表示全部显示；
 
 4.  生成视频缩略图
-    为了加速预览，www浏览视频时实际是浏览的缩略图路径，位置在www/public/thumbnails下，对应的文件名就是视频文件名。该目录下的缩略图可以由www/utils/takescreenshots.js生成。
+    - 为了加速预览，www浏览视频时实际是浏览的缩略图路径，位置在www/public/thumbnails下，对应的文件名就是视频文件名。该目录下的缩略图可以由www/utils/takescreenshots.js生成。
     ```
     cd www/utils
     node takescreenshots.js
     ```
-    运行`node takescreenshots.js -h`可以查看该工具帮助。
+    - 运行`node takescreenshots.js -h`可以查看该工具帮助。
 
 5.  启动
     - 运行videoserver

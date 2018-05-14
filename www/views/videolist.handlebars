@@ -1,0 +1,22 @@
+<div class="page container" data-page="index">
+  <h1 class="title">{{title}}</h1>
+  <div class="">
+    {{#each rows}}
+    <div class="row">
+      {{#each this}}
+        <div class="{{class}}">
+          {{>thumbnails this}}
+        </div>
+      {{/each}}
+    </div>
+    {{/each}}
+    <!-- 加载提示符 -->
+    <div class="infinite-scroll-preloader searchbar-found">
+      <div class="preloader"></div>
+      <button id="load-continue" class="btn btn-default">
+        <span class="glyphicon glyphicon-download"></span> 加载...
+      </button>
+    </div>
+  </div>
+</div>
+<!-- 模态框（Modal） -->

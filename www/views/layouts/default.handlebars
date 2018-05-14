@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>我的相册</title>
+	  <meta name="description" content="Admin页面">
+	  <meta name="keywords" content="index">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="renderer" content="webkit">
+	  <meta http-equiv="Cache-Control" content="no-siteapp" />
+	  <meta name="admin-title" content="admin UI" />
+	  <link rel="icon" type="image/png" href="{{static '/img/i/favicon.png'}}">
+	  <link rel="stylesheet" href="{{static 'bootstrap/dist/css/bootstrap.css'}}">
+	  <link rel="stylesheet" href="{{static '/css/my.css'}}">
+	  <style type="text/css">
+	    body{
+	      min-width: 641px;
+	    }
+    </style>
+		<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+		<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+		<script src="http://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
+		<![endif]-->
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="{{static '/js/jquery.min.js'}}"></script>
+		<!--<![endif]-->
+		<script src="{{static '/js/handlebars.min.js'}}"></script>
+	</head>
+	<body>
+		{{{body}}} 
+		{{!-- <script src="{{static '/js/my.js'}}"></script> --}}
+		<script src="{{static '/js/videolist.js'}}"></script>
+
+	</body>
+</html>

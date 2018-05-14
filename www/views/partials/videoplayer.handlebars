@@ -1,0 +1,27 @@
+<div class="videoPlayerWrap">
+  <div class="videoPlayer" id="vp_{{name}}">
+    <video id="video" class="img-yj-small" width="{{width}}px" height="{{height}}px" >
+      你的浏览器不支持
+      <source src="{{videoUrl path}}" type="{{type}}">
+    </video>
+      <div id="progressWrap">
+        <div id="progressBar"></div>
+        <div id="playProgress"></div>
+      </div>
+    <div id="videoControls" style="width:{{width}}px;">
+      <div class="buttons">
+        <button id="playButton" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-play"></span>
+        </button>
+        <button id="stopButton" class="btn btn-default btn-sm" disabled="true">
+          <span class="glyphicon glyphicon-stop"></span>
+        </button>
+        {{!--
+        <button id="fullScreenBtn" title="FullScreen Toggle"> 全屏 </button> --}}
+      </div>
+      <div id="progressText" class="clearfloat">
+        <span id="showProgress">0.0%</span>
+      </div>
+    </div>
+  </div>
+</div>

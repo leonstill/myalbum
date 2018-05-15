@@ -3,20 +3,17 @@ MyAlbum
 ---
 
 # 我的相册
-
-- 浏览指定目录的所有视频。
+“我的相册”是一款小型的视频流点播Web应用（web application）。
+- 浏览指定目录的所有视频（帧截图），点播某一视频。
 - 标记图片、视频文件，不修改原文件名；(*)
 
-## 版本说明
-v0.01                   建立目录结构，完成测试代码中stream服务及视频seek功能。
-v0.02                   视频服务器启动时自动生成缩略图。(*)
 
 ## 目录结构
 ```
 config/                 全局配置
 test/                   测试代码存放目录
 videoserver/            视频服务器
-www/                    前端页面服务程序
+www/                    前端web服务程序
 README.md               本说明文件
 ```
 ## 安装配置
@@ -33,7 +30,7 @@ $ git clone https://github.com/leonstill/myalbum.git
 如：
     ```
     ...
-    fileRoot: "/home/liang/backup/phone/Camera/video",
+    fileRoot: "/home/phone/Camera/video",
     videoserver: "http://127.0.0.1:8081", 
     ...
     ```
@@ -63,9 +60,10 @@ $ git clone https://github.com/leonstill/myalbum.git
     $ cd www/ && npm start
     ```
 
-6.  访问
+## 访问
     如果web服务器运行在本地，则在浏览器中打开"http://localhost:4000/video"即可看到内容。
     
     
 ## 备注
-- （*） 说明还未完成的功能。
+-  （*） 说明还未完成的功能。
+-  takescreenshots.js依赖模块fluent-ffmpeg需要本地安装ffmpeg，请google安装参考。

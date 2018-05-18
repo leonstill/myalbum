@@ -8,7 +8,6 @@ const fs = require('fs');
 //const iconv = require('iconv-lite');
 const path = require('path');
 const config = require('../config');	        // 全局配置
-const static = require('../lib/static.js');     // 静态文件路径配置
 
 const router = express.Router();
 
@@ -65,7 +64,7 @@ function formatRows(files) {
                 height: 320,
                 playinfo: JSON.stringify({
                     title: files[i * 3 + j],
-                    path: config.videoserver + static.map(files[i * 3 + j]),
+                    path: config.staticUrl.video(files[i * 3 + j]),
                     type: "video/mp4",
                 })
             });

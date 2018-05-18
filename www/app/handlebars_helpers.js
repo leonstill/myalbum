@@ -7,24 +7,24 @@
  */
 const config = require('../config');
 
-module.exports = {
+module.exports =  {
 	static: function(name) {
-		return require('../lib/static.js').map(name);
+		return config.staticUrl.map(name);
 	},
-	compare: function(left, operator, right, options) {		
+	compare: function(left, operator, right, options) {
 		if (arguments.length < 3) {
 			throw new Error('Handlerbars Helper "compare" needs 2 parameters');
 		}
 		var operators = {
-			'==':     function(l, r) {return l == r; },
-			'===':    function(l, r) {return l === r; },
-			'!=':     function(l, r) {return l != r; },
-			'!==':    function(l, r) {return l !== r; },
-			'<':      function(l, r) {return l < r; },
-			'>':      function(l, r) {return l > r; },
-			'<=':     function(l, r) {return l <= r; },
-			'>=':     function(l, r) {return l >= r; },
-			'typeof': function(l, r) {return typeof l == r; }
+			'==': function (l, r) { return l == r; },
+			'===': function (l, r) { return l === r; },
+			'!=': function (l, r) { return l != r; },
+			'!==': function (l, r) { return l !== r; },
+			'<': function (l, r) { return l < r; },
+			'>': function (l, r) { return l > r; },
+			'<=': function (l, r) { return l <= r; },
+			'>=': function (l, r) { return l >= r; },
+			'typeof': function (l, r) { return typeof l == r; }
 		};
 
 		if (!operators[operator]) {
@@ -38,16 +38,13 @@ module.exports = {
 		} else {
 			return options.inverse(this);
 		}
- 	},
- 	shopImages: function(name, subdir) {
- 		return require('../lib/static.js').shopImages(name, subdir);
- 	},
- 	webupImages: function(name) {
- 		return require('../lib/static.js').webup('images', name);	
-	 },
+	},
+	image: function(name) {
+		return config.staticUrl.image(name);
+	},
 	videoUrl: function(path) {
-		return config.videoserver + '/' + path;	
-	 }
+		return config.staticUrl.video(path);
+	}
 };
 
 

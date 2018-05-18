@@ -26,7 +26,7 @@ var cfg = {
         // fileRoot: '/home/liang/tmp/video',
         //fileRoot: "/mnt/winshare",
         fileRoot: "/home/liang/backup/phone/Camera/video",
-        videoserver: "http://192.168.30.133:8081", 
+        videoserver: "http://116.211.116.178:8081", 
     },
     // production环境下的配置
     production: {

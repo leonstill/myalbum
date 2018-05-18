@@ -2,6 +2,15 @@ const http = require('http');
 const fs = require('fs');
 //const iconv = require('iconv-lite');
 const path = require('path');
+const utils = require('./utils.js');
+
+
+var getClientIp = function (req) {
+	return req.headers['x-real-ip'] || req.headers['x-forwarded-for'] ||
+		req.connection.remoteAddress ||
+		req.socket.remoteAddress ||
+		req.connection.socket.remoteAddress;
+}
 
 function app(options) {
 	const PORT = options.port;
@@ -9,10 +18,11 @@ function app(options) {
 	const FILE_ROOT_DIR = options.fileRoot || "./";
 	const host = options.host || "http://127.0.0.1";
 
-	http.createServer((req, res) => {
+	console.log("File root dir:", FILE_ROOT_DIR);
 
-		console.log("req.url: " + req.url);
-		console.log("req.headers.range: " + req.headers.range);
+	http.createServer((req, res) => {
+		var time = utils.getTime("Y-m-d H:M:S.ms");
+		console.log("[" + time + "] req.url:" + req.url + " (req.headers.range:" + req.headers.range + ")" + " from IP:" + getClientIp(req));
 
 		var error = function (err) {
 			var msg = (typeof (err) === "object" && err.message) ? err.message : (typeof (err) === "string" ? err : JSON.stringify(err));
@@ -55,9 +65,8 @@ function app(options) {
 			var file = req.url.replace(/^(.*\/)([^\/]+)$/, "$2");
 			//file = Buffer.from(, 'gbk');
 			//file = iconv.decode(new Buffer(decodeURIComponent(file)), 'gb2312');
-			//var file = 
 			var moviePath = path.join(FILE_ROOT_DIR, decodeURIComponent(file));
-			console.log("moviePath:" + moviePath);
+			// console.log("moviePath:" + moviePath);
 			try {
 				if (!fs.existsSync(moviePath))
 					throw "file is not exist!";
@@ -77,6 +86,14 @@ function app(options) {
 
 	console.log('Server ' + host + ' started.');
 }
+
+//------------------------------------------------------------------------------
+// 异常处理
+// set uncaughtException
+process.on('uncaughtException', function (err) {
+	console.log('Uncaught exception error:', err.message);
+});
+
 
 module.exports = app;
 

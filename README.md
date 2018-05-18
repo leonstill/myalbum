@@ -14,6 +14,7 @@ config/                 全局配置
 test/                   测试代码存放目录
 videoserver/            视频服务器
 www/                    前端web服务程序
+nginx/                  主机反向代理nginx的配置文件
 README.md               本说明文件
 ```
 ## 安装配置

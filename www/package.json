@@ -18,7 +18,7 @@
     "express-session": "^1.15.6",
     "fluent-ffmpeg": "^2.1.2",
     "merge": "^1.2.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.6"
   },
   "devDependencies": {
     "cross-env": "^5.1.4"
